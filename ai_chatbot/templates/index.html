@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #6dd5ed, #2193b0);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .chat-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            width: 400px;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .chat-box {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #f9f9f9;
+        }
+        .user-msg {
+            background: #2193b0;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin: 5px 0;
+            text-align: right;
+        }
+        .bot-msg {
+            background: #eee;
+            color: #333;
+            padding: 8px 12px;
+            border-radius: 8px;
+            margin: 5px 0;
+            text-align: left;
+        }
+        form {
+            display: flex;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+        button {
+            background: #2193b0;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-left: 5px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #176782;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <h1>AI Chatbot</h1>
+        <div class="chat-box">
+            {% if response %}
+                <div class="user-msg">You: {{ request.form['message'] }}</div>
+                <div class="bot-msg">Bot: {{ response }}</div>
+            {% endif %}
+        </div>
+        <form method="post">
+            <input type="text" name="message" placeholder="Type your message..." required>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+</body>
+</html>
